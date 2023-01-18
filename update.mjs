@@ -40,6 +40,9 @@ async function sync() {
   }
   for (const task of tasks) {
     console.log(task.name)
+    if (task.run && process.argv.includes('-f')) {
+      console.log(await task.run())
+    }
   }
 }
 

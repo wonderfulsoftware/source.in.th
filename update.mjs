@@ -4,7 +4,7 @@ const config = [
 ]
 
 const zoneId = process.env.CLOUDFLARE_ZONE_ID
-const apiKey = process.env.CLOUDFLARE_API_KEY
+const apiToken = process.env.CLOUDFLARE_API_TOKEN
 
 await sync()
 
@@ -48,7 +48,7 @@ async function getZones() {
     `https://api.cloudflare.com/client/v4/zones/${zoneId}/dns_records`,
     {
       headers: {
-        Authorization: `Bearer ${apiKey}`,
+        Authorization: `Bearer ${apiToken}`,
       },
     },
   )
@@ -62,7 +62,7 @@ async function deleteZoneById(id) {
     {
       method: 'DELETE',
       headers: {
-        Authorization: `Bearer ${apiKey}`,
+        Authorization: `Bearer ${apiToken}`,
       },
     },
   )
@@ -75,7 +75,7 @@ async function updateZoneById(id, type, name, content) {
     {
       method: 'PUT',
       headers: {
-        Authorization: `Bearer ${apiKey}`,
+        Authorization: `Bearer ${apiToken}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ type, name, content, ttl: 1 }),
@@ -90,7 +90,7 @@ async function createZone(type, name, content) {
     {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${apiKey}`,
+        Authorization: `Bearer ${apiToken}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ type, name, content, ttl: 1 }),

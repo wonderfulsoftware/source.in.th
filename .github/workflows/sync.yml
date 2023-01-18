@@ -1,0 +1,27 @@
+name: Sync DNS records
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'update.mjs'
+      - '.github/workflows/sync.yml'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    name: Synchronize
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Sync DNS records
+        run: node update.mjs
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}

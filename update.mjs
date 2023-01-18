@@ -1,0 +1,101 @@
+const config = [
+  ['lamb.source.in.th', 'CNAME', 'cname.vercel-dns.com'],
+  ['open.source.in.th', 'CNAME', 'creatorsgarten.github.io'],
+]
+
+const zoneId = process.env.CLOUDFLARE_ZONE_ID
+const apiKey = process.env.CLOUDFLARE_API_KEY
+
+await sync()
+
+async function sync() {
+  const zones = await getZones()
+  const tasks = []
+  for (const entry of config) {
+    const [name, type, content] = entry
+    const zone = zones.find((zone) => zone.name === name && zone.type === type)
+    if (zone) {
+      const id = zone.id
+      if (!content) {
+        tasks.push({
+          name: `Delete: ${name} ${type} (id: ${id})`,
+          run: () => deleteZoneById(id),
+        })
+      } else if (zone.content !== content) {
+        tasks.push({
+          name: `Update: ${name} ${type} -> ${content} (id: ${id})`,
+          run: () => updateZoneById(id, type, name, content),
+        })
+      } else {
+        tasks.push({
+          name: `Up-to-date: ${name} ${type} -> ${content} (id: ${id})`,
+        })
+      }
+    } else {
+      tasks.push({
+        name: `Create: ${name} ${type} -> ${content}`,
+        run: () => createZone(type, name, content),
+      })
+    }
+  }
+  for (const task of tasks) {
+    console.log(task.name)
+  }
+}
+
+async function getZones() {
+  const response = await fetch(
+    `https://api.cloudflare.com/client/v4/zones/${zoneId}/dns_records`,
+    {
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+      },
+    },
+  )
+  const { result } = await response.json()
+  return result
+}
+
+async function deleteZoneById(id) {
+  const response = await fetch(
+    `https://api.cloudflare.com/client/v4/zones/${zoneId}/dns_records/${id}`,
+    {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+      },
+    },
+  )
+  return `${response.status}`
+}
+
+async function updateZoneById(id, type, name, content) {
+  const response = await fetch(
+    `https://api.cloudflare.com/client/v4/zones/${zoneId}/dns_records/${id}`,
+    {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ type, name, content, ttl: 1 }),
+    },
+  )
+  return `${response.status}`
+}
+
+async function createZone(type, name, content) {
+  const response = await fetch(
+    `https://api.cloudflare.com/client/v4/zones/${zoneId}/dns_records`,
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ type, name, content, ttl: 1 }),
+    },
+  )
+  const { result } = await response.json()
+  return `${response.status} ${result.id}`
+}

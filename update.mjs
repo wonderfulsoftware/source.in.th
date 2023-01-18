@@ -1,4 +1,6 @@
 const config = [
+  ['source.in.th', 'CNAME', 'apex-loadbalancer.netlify.com'],
+  ['www.source.in.th', 'CNAME', 'sourceinth.netlify.app'],
   ['lamb.source.in.th', 'CNAME', 'cname.vercel-dns.com'],
   ['open.source.in.th', 'CNAME', 'creatorsgarten.github.io'],
 ]

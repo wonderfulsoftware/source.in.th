@@ -1,7 +1,12 @@
 const config = [
+  // https://github.com/wonderfulsoftware/source.in.th/blob/main/public/_redirects
   ['source.in.th', 'CNAME', 'apex-loadbalancer.netlify.com'],
   ['www.source.in.th', 'CNAME', 'sourceinth.netlify.app'],
+
+  // https://github.com/rayriffy/lamb
   ['lamb.source.in.th', 'CNAME', 'cname.vercel-dns.com'],
+
+  // TBA
   ['open.source.in.th', 'CNAME', 'creatorsgarten.github.io'],
 ]
 

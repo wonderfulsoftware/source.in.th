@@ -4,7 +4,7 @@ const config = [
   ['www.source.in.th', 'CNAME', 'sourceinth.netlify.app'],
 
   // https://github.com/rayriffy/lamb
-  ['lamb.source.in.th', 'CNAME', 'cname.vercel-dns.com'],
+  ['lamb.source.in.th', 'CNAME', 'rayriffy.github.io'],
 
   // TBA
   ['open.source.in.th', 'CNAME', 'creatorsgarten.github.io'],

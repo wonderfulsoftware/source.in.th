@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "discord.bangkok.open.source.in.th"
+        }
+      ],
+      "destination": "https://garten.page.link/bkkoss-discord",
+      "permanent": false
+    }
+  ]
+}

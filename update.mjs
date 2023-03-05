@@ -8,7 +8,7 @@ const config = [
   ['lamb.source.in.th', 'CNAME', 'rayriffy.github.io'],
 
   // Experiment with Canasta
-  ['bangkok.source.in.th', 'A', '49.0.197.156'],
+  ['bangkok.source.in.th', 'A', '103.169.67.34'],
 ]
 
 const zoneId = process.env.CLOUDFLARE_ZONE_ID

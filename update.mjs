@@ -7,6 +7,9 @@ const config = [
   // https://github.com/rayriffy/lamb
   ['lamb.source.in.th', 'CNAME', 'rayriffy.github.io'],
 
+  // https://github.com/dtinth/screenshot-redirector
+  ['screenshot.source.in.th', 'CNAME', 'cname.vercel-dns.com'],
+
   // Experiment with Canasta
   ['bangkok.source.in.th', 'A', '103.169.67.34'],
 ]

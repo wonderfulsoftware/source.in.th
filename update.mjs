@@ -12,6 +12,9 @@ const config = [
 
   // Experiment with Canasta
   ['bangkok.source.in.th', 'A', '103.169.67.34'],
+
+  // https://github.com/dtinth/transit.source.in.th
+  ['transit.source.in.th', 'CNAME', 'cname.vercel-dns.com'],
 ]
 
 const zoneId = process.env.CLOUDFLARE_ZONE_ID

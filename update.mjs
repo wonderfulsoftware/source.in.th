@@ -18,6 +18,7 @@ const config = [
 
   // chordsource
   ['db.chord.source.in.th', 'CNAME', 'dtinth.github.io'],
+  ['chord.source.in.th', 'CNAME', 'cname.vercel-dns.com'],
 ]
 
 const zoneId = process.env.CLOUDFLARE_ZONE_ID

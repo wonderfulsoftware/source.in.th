@@ -15,6 +15,9 @@ const config = [
 
   // https://github.com/dtinth/transit.source.in.th
   ['transit.source.in.th', 'CNAME', 'cname.vercel-dns.com'],
+
+  // chordsource
+  ['db.chord.source.in.th', 'CNAME', 'dtinth.github.io'],
 ]
 
 const zoneId = process.env.CLOUDFLARE_ZONE_ID

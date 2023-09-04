@@ -1,4 +1,7 @@
 const config = [
+  // Vercel domain verification
+  ['_vercel.source.in.th', 'TXT', 'vc-domain-verify=cname.vercel-dns.com,285f12e4d6593c081ce2'],
+
   // https://github.com/wonderfulsoftware/source.in.th/blob/main/public/_redirects
   ['source.in.th', 'CNAME', 'apex-loadbalancer.netlify.com'],
   ['www.source.in.th', 'CNAME', 'sourceinth.netlify.app'],

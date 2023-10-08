@@ -19,6 +19,9 @@ const config = [
   // https://github.com/dtinth/transit.source.in.th
   ['transit.source.in.th', 'CNAME', 'cname.vercel-dns.com'],
 
+  // https://github.com/creatorsgarten/source.in.th
+  ['open.source.in.th', 'CNAME', 'bosf2023.netlify.app'],
+
   // chordsource
   ['db.chord.source.in.th', 'CNAME', 'dtinth.github.io'],
   ['chord.source.in.th', 'CNAME', 'cname.vercel-dns.com'],
